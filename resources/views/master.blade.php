@@ -27,5 +27,37 @@
 		height: 500px;
 		padding-top:100px;
 	}
+	img.slider-img
+	{
+		height: 400px  !important;
+
+	}
+	.custom-product
+	{
+		height: 600px;
+
+	}
+	.slider-text
+	{
+		background-color: #24465454 !important;
+	}
+	.trading-img
+	{
+		height: 100px;
+
+	}
+	.trading-item
+	{
+		float: left;
+		width: 20%;
+	}
+	.trading-wrapper
+	{
+		margin: 20px;
+	}
+	.detail-img
+	{
+		height: 200px;
+	}
 </style>
 </html>
