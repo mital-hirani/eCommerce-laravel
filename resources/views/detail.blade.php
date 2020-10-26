@@ -23,7 +23,12 @@
 			</h3>
 			
 			<br>
-			<button class="btn btn-success">Add to cart</button>
+			<form action="/add_to_cart" method="post">
+				@csrf
+				<input type="hidden" name="product_id" value="{{$product['id']}}">
+				<button class="btn btn-success">Add to cart</button>
+			</form>
+			
 			<br>
 			<br>
 			<button class="btn btn-primary">By now</button>
