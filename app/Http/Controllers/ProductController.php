@@ -8,6 +8,8 @@ use App\Models\Product;
 
 use App\Models\Cart;
 
+use App\Models\Order;
+
 use Illuminate\Support\Facades\DB;
 
 
@@ -74,5 +76,49 @@ class ProductController extends Controller
     	Cart::destroy($id);
     	return redirect('cartlist');
     }
+    function ordernow()
+    {
+    	$userId=Session::get('user')['id'];
+    	$total = DB::table('cart')
+    	->join('Products','cart.product_id','products.id')
+    	->where('cart.user_id',$userId)
+    	->sum('products.price');
+    	return view('ordernow',['total'=>$total]);
+    }
+    function orderPlace(Request $req)
+    {
+       $userId=Session::get('user')['id'];
+       $allCart=Cart::where('user_Id',$userId)->get();
+       foreach ($allCart as $cart) 
+       {
+           $order = new Order;
+           $order->product_id=$cart['product_id'];
+           $order->user_id=$cart['user_id'];
+           $order->address=$req->address;
+           $order->status="panding";
+           $order->payment_method=$req->Payment;
+           $order->payment_status="padding";
+           $order->save();
+
+
+       }
+        Cart::where('user_Id',$userId)->delete();
+        return redirect("/");
+
+       //return $req->input();
+
+    }
+    function  myOrder()
+    {
+    	 $userId=Session::get('user')['id'];
+    	$orders = DB::table('orders')
+    	->join('Products','orders.product_id','products.id')
+    	->where('orders.user_id',$userId)
+    	->get();
+    	return view('myorder',['orders'=>$orders]);
+    
+    }
+
+
 }
   

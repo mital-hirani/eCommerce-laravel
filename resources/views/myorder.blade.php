@@ -6,12 +6,11 @@
 	
 	 <div class="col-sm-10">
 	 	<div class="trading-wrapper">
-			<h1>cart list</h1>
-			<a href="/ordernow" class="btn btn-success">Order now</a>
-			<br>
+			<h1>orders list</h1>
+			
 			<br>
 			
-		   @foreach($products as $item)
+		   @foreach($orders as $item)
 		  		  <div class="row searched-item cart-list-devide">
 		  		  	<div class="col-sm-3">
 		  		  		<a href="detail/{{$item->id}}">
@@ -20,18 +19,22 @@
 				  
 		  		  	</div>
 		  		  	<div class="col-sm-3">
-		  		  		<h3>{{$item->name}}</h3>
-				        <h5>{{$item->description}}</h5>
+		  		  		<h2>{{$item->name}}</h2>
+		  		  		<h5>Delivary status : {{$item->status}}</h5>
+				        <h5>Patment status : {{$item->payment_status}}</h5>
+				        <h5>Patment method : {{$item->payment_method}}</h5>
+				        <h5>Delivary address : {{$item->address}}</h5>
+				        <h5>Price : {{$item->price}}</h5>
 		  		  	</div>
 
 				 
 				  <div class="col-sm-3">
-				  <a class="btn btn-warning" href="/removeCart/{{$item->cart_id}}" >remove from cart</a>
+				 
 				  </div>
 			</div>
 		  	@endforeach
 
-		    <a href="/ordernow" class="btn btn-success">Order now</a>
+		   
 			<br>
 			<br>
 		</div>
