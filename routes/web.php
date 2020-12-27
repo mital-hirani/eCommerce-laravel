@@ -37,8 +37,12 @@ Route::get('/logout',function()
 Route::view('/login','login');
 
 
+Route::view('/register','register');
+
 
 Route::post('/login',[UserController::class,'login']);
+
+Route::post('/register',[UserController::class,'register']);
 
 
 Route::get('/',[ProductController::class,'index']);

@@ -47,6 +47,7 @@ if(Session::has('user'))
       </li>
       @else
       <li><a href="/login">login</a></li>
+      <li><a href="/register">register</a></li>
       @endif
        
       </ul>
